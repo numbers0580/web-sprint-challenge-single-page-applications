@@ -60,3 +60,11 @@ nav button:hover {
   background-color: yellow;
   color: red;
 }
+
+.toppingsList {
+  display: flex;
+}
+
+.toppingsList div {
+  width: 240px;
+}

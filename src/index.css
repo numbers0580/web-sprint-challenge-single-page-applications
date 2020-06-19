@@ -11,3 +11,52 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+header {
+  padding: 0 2%;
+  background-image:url('./Pizza.jpg');
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+		
+h1 {
+  width: 50%;
+  text-align: center;
+  font-size: 3rem;
+  color: #00A0A0;
+  background-color: #C0C0C0A0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.mainBtns {
+  width: 30%;
+}
+
+.rightBtn {
+  width: 10%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #E0E000;
+  border: 2px solid red;
+  border-radius: 25px;
+  color: #C00000;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+nav button:hover {
+  background-color: yellow;
+  color: red;
+}

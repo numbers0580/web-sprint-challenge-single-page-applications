@@ -12,20 +12,20 @@ function Form (props) {
             Name, Address, Phone Number, Pickup/Delivery option, Store Location dropdown</p>
             <div class='mainFormDiv'>
                 <label>Your Name:&nbsp;</label>
-                <input type='text' name='custName' />
+                <input type='text' name='custName' value={entries.custName} maxLength='15' onChange={inputChange} />
             </div>
             <div class='mainFormDiv'>
                 <label>Address:&nbsp;</label>
-                <input type='text' name='custAddr' />
+                <input type='text' name='custAddr' value={entries.custAddr} maxLength='40' onChange={inputChange} />
             </div>
             <div class='mainFormDiv'>
                 <label>Phone Number:&nbsp;</label>
-                <input type='phone' name='custPhone' />
+                <input type='phone' name='custPhone' value={entries.custPhone} onChange={inputChange} />
             </div>
             <div class='mainFormDiv'>
                 <label>Pickup or Delivery:&nbsp;</label>
-                <input type='radio' name='puDelivery' value='Pickup' />Pickup&nbsp;
-                <input type='radio' name='puDelivery' value='Delivery' />Delivery
+                <input type='radio' name='puDelivery' value='Pickup' onChange={inputChange} />Pickup&nbsp;
+                <input type='radio' name='puDelivery' value='Delivery' onChange={inputChange} />Delivery
             </div>
             <BrowserRouter>
                 <Link to='/pizza'><button type='submit' name='submitBtn' disabled={disability}>Customize Pizza</button></Link>

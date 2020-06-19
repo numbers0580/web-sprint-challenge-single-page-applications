@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 import * as yup from 'yup';
 import {v4} from 'uuid';
 import Form from './Form';
-import Order from './Order';
+import Home from './Home';
 import axios from "axios";
 
 const formSchema = yup.object().shape({
@@ -17,21 +17,31 @@ const formSchema = yup.object().shape({
     .number(),
   puDelivery: yup
     .string()
-    .required("Please select either Pickup or Delivery")
+    .required("Please select either Pickup or Delivery"),
+  pizzaSize: yup
+    .string()
+    .required("Please choose which size of Pizza"),
+  sauce: yup
+    .string()
+    .required("Please select which kind of sauce you'd like")
 });
 
 const blankForm = {
   custName: '',
   custAddr: '',
   custPhone: '',
-  puDelivery: ''
+  puDelivery: '',
+  pizzaSize: '',
+  sauce: ''
 };
 
 const blankErrors = {
   custName: '',
   custAddr: '',
   custPhone: '',
-  puDelivery: ''
+  puDelivery: '',
+  pizzaSize: '',
+  sauce: ''
 };
 
 const App = () => {
@@ -69,7 +79,7 @@ const App = () => {
     updateEntries({...mainEntries, [name]: value});
   };
 
-  const clickedCustomize = function(cEvent) {
+  const clickedConfirm = function(cEvent) {
     cEvent.preventDefault();
 
     const newCustomer = {
@@ -77,7 +87,9 @@ const App = () => {
       custName: mainEntries.custName.trim(),
       custAddr: mainEntries.custAddr.trim(),
       custPhone: mainEntries.custPhone.trim(),
-      puDelivery: mainEntries.puDelivery
+      puDelivery: mainEntries.puDelivery,
+      pizzaSize: mainEntries.pizzaSize,
+      sauce: mainEntries.sauce
     };
   }
 
@@ -103,9 +115,9 @@ const App = () => {
         </nav>
       </header>
       <Switch>
-        <Route exact path='/pizza' component={Order} />
-        <Route exact path='/'>
-          <Form entries={mainEntries} inputChange={changedMainForm} inputErrors={mainErrors} disability={isDisabled} formNext={clickedCustomize} />
+        <Route exact path='/' component={Home} />
+        <Route exact path='/pizza'>
+          <Form entries={mainEntries} inputChange={changedMainForm} inputErrors={mainErrors} disability={isDisabled} formSubmit={clickedConfirm} />
         </Route>
       </Switch>
     </BrowserRouter>

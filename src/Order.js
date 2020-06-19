@@ -6,8 +6,8 @@ function Order (props) {
             <h2>Build Your Own Pizza</h2>
             <div>
                 <label>Pizza Size:&nbsp;</label>
-                <select>
-                    <option>--- Please Select a Size ---</option>
+                <select name='pizzaSize'>
+                    <option value=''>--- Please Select a Size ---</option>
                     <option value='Small'>Small (8 inch)</option>
                     <option value='Medium'>Medium (11 inch)</option>
                     <option value='Large'>Large (14 inch)</option>

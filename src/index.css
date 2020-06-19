@@ -68,3 +68,20 @@ nav button:hover {
 .toppingsList div {
   width: 240px;
 }
+
+textarea {
+  width: 300px;
+  height: 100px;
+}
+
+.categories {
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.categories button {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+}

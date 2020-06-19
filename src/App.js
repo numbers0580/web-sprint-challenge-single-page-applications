@@ -4,12 +4,20 @@ import * as yup from 'yup';
 import {v4} from 'uuid';
 import Form from './Form';
 import Order from './Order';
+import axios from "axios";
 
 const formSchema = yup.object().shape({
   custName: yup
     .string()
     .min(2, "Your name must be at least 2 characters")
-    .required("A name is required to place the order")
+    .required("A name is required to place the order"),
+  custAddr: yup
+    .string(),
+  custPhone: yup
+    .number(),
+  puDelivery: yup
+    .string()
+    .required("Please select either Pickup or Delivery")
 });
 
 const blankForm = {
@@ -27,10 +35,23 @@ const blankErrors = {
 };
 
 const App = () => {
-  const [users, setUsers] = useState([]);
+  const [getPizza, setPizzaInOven] = useState([]);
   const [mainEntries, updateEntries] = useState(blankForm);
   const [mainErrors, updateErrors] = useState(blankErrors);
   const [isDisabled, changeDisabled] = useState(true);
+
+  const submitOrder = function(newOrder) {
+    axios.post('https://reqres.in/api/other', newOrder)
+      .then(placeOrder => {
+        setPizzaInOven([...getPizza, placeOrder.data]);
+      })
+      .catch(orderError => {
+        console.log('Error in adding customer\'s order');
+      })
+      .finally(evt => {
+        updateEntries(blankForm);
+      })
+  };
 
   const changedMainForm = function(event) {
     const {name, value} = event.target;

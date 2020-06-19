@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import {v4} from 'uuid';
 import Form from './Form';
 import Home from './Home';
-import axios from "axios";
+import axios from 'axios';
 
 const formSchema = yup.object().shape({
   custName: yup
@@ -12,9 +12,11 @@ const formSchema = yup.object().shape({
     .min(2, "Your name must be at least 2 characters")
     .required("A name is required to place the order"),
   custAddr: yup
-    .string(),
+    .string()
+    .required("So that we can find you"),
   custPhone: yup
-    .number(),
+    .number()
+    .required("So that we can call you"),
   puDelivery: yup
     .string()
     .required("Please select either Pickup or Delivery"),
@@ -32,7 +34,29 @@ const blankForm = {
   custPhone: '',
   puDelivery: '',
   pizzaSize: '',
-  sauce: ''
+  sauce: '',
+  xtraCheese: false,
+  pepperoni: false,
+  sausage: false,
+  canadianBacon: false,
+  breakfastBacon: false,
+  salami: false,
+  groundBeef: false,
+  chicken: false,
+  pulledPork: false,
+  shrimp: false,
+  mushrooms: false,
+  greenPeppers: false,
+  redPeppers: false,
+  onions: false,
+  spinach: false,
+  artichoke: false,
+  blackOlives: false,
+  sundriedTomatoes: false,
+  jalapeno: false,
+  pineapple: false,
+  spcInstructions: ''
+
 };
 
 const blankErrors = {
@@ -51,9 +75,11 @@ const App = () => {
   const [isDisabled, changeDisabled] = useState(true);
 
   const submitOrder = function(newOrder) {
-    axios.post('https://reqres.in/api/other', newOrder)
+    axios.post('https://reqres.in/api/users', newOrder)
       .then(placeOrder => {
+        console.log('placeOrder.data is', placeOrder.data);
         setPizzaInOven([...getPizza, placeOrder.data]);
+        console.log('getPizza is', getPizza);
       })
       .catch(orderError => {
         console.log('Error in adding customer\'s order');
@@ -62,6 +88,9 @@ const App = () => {
         updateEntries(blankForm);
       })
   };
+
+  let newPizzaOrder = getPizza;
+  console.log('Data Posted to database is:', newPizzaOrder[0]);
 
   const changedMainForm = function(event) {
     const {name, value} = event.target;
@@ -79,6 +108,16 @@ const App = () => {
     updateEntries({...mainEntries, [name]: value});
   };
 
+  const checkToppings = function(evt) {
+    const {name, checked} = evt.target;
+    updateEntries({...mainEntries, [name]: checked});
+  }
+
+  const changedSpecInst = function(specEvent) {
+    const {name, value} = specEvent.target;
+    updateEntries({...mainEntries, [name]: value});
+  }
+
   const clickedConfirm = function(cEvent) {
     cEvent.preventDefault();
 
@@ -89,8 +128,31 @@ const App = () => {
       custPhone: mainEntries.custPhone.trim(),
       puDelivery: mainEntries.puDelivery,
       pizzaSize: mainEntries.pizzaSize,
-      sauce: mainEntries.sauce
+      sauce: mainEntries.sauce,
+      xtraCheese: mainEntries.xtraCheese,
+      pepperoni: mainEntries.pepperoni,
+      sausage: mainEntries.sausage,
+      canadianBacon: mainEntries.canadianBacon,
+      breakfastBacon: mainEntries.breakfastBacon,
+      salami: mainEntries.salami,
+      groundBeef: mainEntries.groundBeef,
+      chicken: mainEntries.chicken,
+      pulledPork: mainEntries.pulledPork,
+      shrimp: mainEntries.shrimp,
+      mushrooms: mainEntries.mushrooms,
+      greenPeppers: mainEntries.greenPeppers,
+      redPeppers: mainEntries.redPeppers,
+      onions: mainEntries.onions,
+      spinach: mainEntries.spinach,
+      artichoke: mainEntries.artichoke,
+      blackOlives: mainEntries.blackOlives,
+      sundriedTomatoes: mainEntries.sundriedTomatoes,
+      jalapeno: mainEntries.jalapeno,
+      pineapple: mainEntries.pineapple,
+      spcInstructions: mainEntries.spcInstructions
     };
+
+    submitOrder(newCustomer);
   }
 
   useEffect(() => {
@@ -117,7 +179,7 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/pizza'>
-          <Form entries={mainEntries} inputChange={changedMainForm} inputErrors={mainErrors} disability={isDisabled} formSubmit={clickedConfirm} />
+          <Form entries={mainEntries} inputChange={changedMainForm} inputChange2={changedSpecInst} checkboxInput={checkToppings} inputErrors={mainErrors} disability={isDisabled} formSubmit={clickedConfirm} />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -85,3 +85,7 @@ textarea {
   height: 30px;
   border-radius: 10px;
 }
+
+.errorMessages {
+  color: red;
+}

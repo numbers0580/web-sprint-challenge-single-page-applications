@@ -58,28 +58,28 @@ function Form (props) {
                 <label>Toppings:</label>
                 <div className="toppingsList">
                     <div>
-                        <input type='checkbox' name='xtraCheese' value={entries.xtraCheese} onChange={checkboxInput} />Extra Cheese<br />
-                        <input type='checkbox' name='pepperoni' value={entries.pepperoni} onChange={checkboxInput} />Pepperoni<br />
-                        <input type='checkbox' name='sausage' value={entries.sausage} onChange={checkboxInput} />Sausage<br />
-                        <input type='checkbox' name='canadianBacon' value={entries.canadianBacon} onChange={checkboxInput} />Canadian Bacon<br />
-                        <input type='checkbox' name='breakfastBacon' value={entries.breakfastBacon} onChange={checkboxInput} />Breakfast Bacon<br />
-                        <input type='checkbox' name='salami' value={entries.salami} onChange={checkboxInput} />Salami<br />
-                        <input type='checkbox' name='groundBeef' value={entries.groundBeef} onChange={checkboxInput} />Ground Beef<br />
-                        <input type='checkbox' name='chicken' value={entries.chicken} onChange={checkboxInput} />Chicken<br />
-                        <input type='checkbox' name='pulledPork' value={entries.pulledPork} onChange={checkboxInput} />Pulled Pork<br />
-                        <input type='checkbox' name='shrimp' value={entries.shrimp} onChange={checkboxInput} />Shrimp<br />
+                        <input type='checkbox' name='xtraCheese' checked={entries.xtraCheese} onChange={checkboxInput} />Extra Cheese<br />
+                        <input type='checkbox' name='pepperoni' checked={entries.pepperoni} onChange={checkboxInput} />Pepperoni<br />
+                        <input type='checkbox' name='sausage' checked={entries.sausage} onChange={checkboxInput} />Sausage<br />
+                        <input type='checkbox' name='canadianBacon' checked={entries.canadianBacon} onChange={checkboxInput} />Canadian Bacon<br />
+                        <input type='checkbox' name='breakfastBacon' checked={entries.breakfastBacon} onChange={checkboxInput} />Breakfast Bacon<br />
+                        <input type='checkbox' name='salami' checked={entries.salami} onChange={checkboxInput} />Salami<br />
+                        <input type='checkbox' name='groundBeef' checked={entries.groundBeef} onChange={checkboxInput} />Ground Beef<br />
+                        <input type='checkbox' name='chicken' checked={entries.chicken} onChange={checkboxInput} />Chicken<br />
+                        <input type='checkbox' name='pulledPork' checked={entries.pulledPork} onChange={checkboxInput} />Pulled Pork<br />
+                        <input type='checkbox' name='shrimp' checked={entries.shrimp} onChange={checkboxInput} />Shrimp<br />
                     </div>
                     <div>
-                        <input type='checkbox' name='mushrooms' value={entries.mushrooms} onChange={checkboxInput} />Mushrooms<br />
-                        <input type='checkbox' name='greenPeppers' value={entries.greenPeppers} onChange={checkboxInput} />Green Peppers<br />
-                        <input type='checkbox' name='redPeppers' value={entries.redPeppers} onChange={checkboxInput} />Red Peppers<br />
-                        <input type='checkbox' name='onions' value={entries.onions} onChange={checkboxInput} />Onions<br />
-                        <input type='checkbox' name='spinach' value={entries.spinach} onChange={checkboxInput} />Spinach<br />
-                        <input type='checkbox' name='artichoke' value={entries.artichoke} onChange={checkboxInput} />Artichoke<br />
-                        <input type='checkbox' name='blackOlives' value={entries.blackOlives} onChange={checkboxInput} />Black Olives<br />
-                        <input type='checkbox' name='sundriedTomatoes' value={entries.sundriedTomatoes} onChange={checkboxInput} />Sun-dried Tomatoes<br />
-                        <input type='checkbox' name='jalapeno' value={entries.jalapeno} onChange={checkboxInput} />Jalapeno<br />
-                        <input type='checkbox' name='pineapple' value={entries.pineapple} onChange={checkboxInput} />Pineapple<br />
+                        <input type='checkbox' name='mushrooms' checked={entries.mushrooms} onChange={checkboxInput} />Mushrooms<br />
+                        <input type='checkbox' name='greenPeppers' checked={entries.greenPeppers} onChange={checkboxInput} />Green Peppers<br />
+                        <input type='checkbox' name='redPeppers' checked={entries.redPeppers} onChange={checkboxInput} />Red Peppers<br />
+                        <input type='checkbox' name='onions' checked={entries.onions} onChange={checkboxInput} />Onions<br />
+                        <input type='checkbox' name='spinach' checked={entries.spinach} onChange={checkboxInput} />Spinach<br />
+                        <input type='checkbox' name='artichoke' checked={entries.artichoke} onChange={checkboxInput} />Artichoke<br />
+                        <input type='checkbox' name='blackOlives' checked={entries.blackOlives} onChange={checkboxInput} />Black Olives<br />
+                        <input type='checkbox' name='sundriedTomatoes' checked={entries.sundriedTomatoes} onChange={checkboxInput} />Sun-dried Tomatoes<br />
+                        <input type='checkbox' name='jalapeno' checked={entries.jalapeno} onChange={checkboxInput} />Jalapeno<br />
+                        <input type='checkbox' name='pineapple' checked={entries.pineapple} onChange={checkboxInput} />Pineapple<br />
                     </div>
                 </div>
             </div>
